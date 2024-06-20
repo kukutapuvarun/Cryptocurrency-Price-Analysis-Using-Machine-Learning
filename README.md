@@ -1,5 +1,7 @@
 # Cryptocurrency Price Analysis using Machine Learning
 
+![website](assets/static/images/website.png)
+
 ## About the Project
 This project aims to analyze cryptocurrency prices using machine learning techniques and also allows the user to securely sell and buy cryptocurrencies like Bitcoin, Ethereum, and ripple. By leveraging historical price data and various machine learning models, the project seeks to predict future price movements and provide insights into the trends and factors affecting cryptocurrency markets.
 
