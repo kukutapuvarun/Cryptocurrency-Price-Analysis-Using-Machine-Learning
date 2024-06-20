@@ -1,0 +1,83 @@
+{%extends 'admins/adminbase.html'%}
+{%load static%}
+{%block contents%}
+
+<section class="hero-area" xmlns="http://www.w3.org/1999/html">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+
+			</div>
+			<div class="col-md-12">
+				<div class="block">
+					<h2>Current Rate is</h2>
+					<p>Current Trading</p>
+                    <table border="2" style="border-collapse: collapse; width: 100%;">
+                        <tr style="background-color: #f0f8ff; color: darkblue; font-weight: bold;">
+                            <th>S.No</th>
+                            <th>Currency</th>
+                            <th>Dollar</th>
+                            <th>Indian Rupee</th>
+                            <th>Conversion Rate</th>
+                            <th>Action</th>
+                        </tr>
+                        {% for i in objects %}
+                        <tr style="background-color: #f8f8f8; color: navy;">
+                            <td>{{forloop.counter}}</td>
+                            <td>{{i.currencytype}}</td>
+                            <td>${{i.doller}}</td>
+                            <td>&#x20B9;{{i.rupee}}</td>
+                            <form action="{% url 'updatecryptocurrency' i.currencytype %}?cur={{i.currencytype}}" method="GET">
+                                <td><input type="text" name="rate" size="10" required></td>
+                                <td><button type="submit" style="background-color: #4682b4; color: white; border: none; padding: 8px 12px; border-radius: 4px;">Update</button></td>
+                            </form>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                    <p style="font-size: 18px;">Date: 28-Sept-2019 Trading Rates of the Crypto Currencies</p>
+                    <table border="2" style="border-collapse: collapse; width: 50%;">
+                        <tr style="background-color: #f0f8ff; color: darkblue; font-weight: bold;">
+                            <th>Currency</th>
+                            <th>Rate</th>
+                        </tr>
+                        <tr style="background-color: #f8f8ff; color: navy;">
+                            <td>Bitcoin</td>
+                            <td>$ 57,780.80</td>
+                        </tr>
+                        <tr style="background-color: #f8f8ff; color: navy;">
+                            <td>Ethereum</td>
+                            <td>$ 2,924.82</td>
+                        </tr>
+                        <tr style="background-color: #f8f8ff; color: navy;">
+                            <td>Ripple</td>
+                            <td>$ 0.51243</td>
+                        </tr>
+                    </table>
+
+                    <h2 style="color: #f8f8ff;">Recently Crypto Currency Changes List</h2>
+                    <table border="2" style="border-collapse: collapse; width: 100%;">
+                        <tr style="background-color: #f8f8f8; color: red; font-weight: bold;">
+                            <th>S.No</th>
+                            <th>Crypto Currency Name</th>
+                            <th>% Change</th>
+                            <th>Current Value</th>
+                            <th>Original Value</th>
+                            <th>Changes</th>
+                            <th>Status</th>
+                            <th>Updated Date</th>
+                        </tr>
+                        {% for i in objects1 %}
+                        <tr style="background-color: #fffacd; color: goldenrod;">
+                            <td>{{forloop.counter}}</td>
+                            <td>{{i.currencyname}}</td>
+                            <td>{{i.conversionRate}} %</td>
+                            <td>$ {{i.newCurrencyValue}}</td>
+                            <td>$ {{i.originalCurrencyValue}}</td>
+                            <td>$ {{i.changeValue}}</td>
+                            <td>{{i.profitOrLoss}}</td>
+                            <td>{{i.changedate}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+{%endblock%}

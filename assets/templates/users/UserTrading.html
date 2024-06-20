@@ -1,0 +1,62 @@
+{%extends 'users/userbase.html'%}
+{%load static%}
+{%block contents%}
+<section class="hero-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+
+			</div>
+			<div class="col-md-12">
+                <div class="block">
+				  <h1>Available Crypto currencies for Sale</h1>
+                    <p>The Agent's Email is Autherised by Our Admin</p>
+                    <style>
+                        table {
+                            border-collapse: collapse;
+                            width: 100%;
+                            color: black;
+                        }
+                        th, td {
+                            border: 2px solid black;
+                            padding: 8px;
+                            text-align: center;
+                        }
+                    </style>
+                    
+                    <table>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Currency Name</th>
+                            <th>Agent Email</th>
+                            <th>Available</th>
+                            <th>Quantity</th>
+                            <th>Buy</th>
+                        </tr>
+                        {% for i in objects %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.currencyName }}</td>
+                            <td>{{ i.useremail }}</td>
+                            <td>{{ i.quantity }}</td>
+                            <td>
+                                <form action="{% url 'UserBuyQuantity' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="number" name="quantity" min="1" max="{{ i.quantity }}" required>
+                                    <input type="hidden" name="agentemail" value="{{ i.useremail }}">
+                                    <input type="hidden" name="currencyname" value="{{ i.currencyName }}">
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-main">Buy</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{%endblock%}

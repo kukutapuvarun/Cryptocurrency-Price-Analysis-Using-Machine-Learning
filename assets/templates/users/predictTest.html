@@ -1,0 +1,71 @@
+{%extends 'users/userbase.html'%}
+{%load static%}
+{%block contents%}
+<section class="hero-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+
+			</div>
+			<div class="col-md-12">
+				<div class="block">
+					<h2>Available Dataset for Predect test</h2>
+                    <style>
+                        /* Styling for the table */
+                        table {
+                            border-collapse: collapse;
+                            width: 100%;
+                            background-color: green;
+                            border: 2px solid black;
+                        }
+                    
+                        /* Styling for table header cells */
+                        th {
+                            background-color: lightgreen;
+                            color: black;
+                            border: 2px solid black;
+                            padding: 8px;
+                            text-align: center;
+                        }
+                    
+                        /* Styling for table data cells */
+                        td {
+                            border: 2px solid black;
+                            padding: 8px;
+                            text-align: center;
+                        }
+                    
+                        /* Styling for table links */
+                        a {
+                            color: white;
+                            text-decoration: none;
+                        }
+                    
+                        /* Hover effect for table links */
+                        a:hover {
+                            text-decoration: underline;
+                        }
+                    </style>
+                    
+                    <table>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Dataset</th>
+                            <th>Predict Test Start</th>
+                        </tr>
+                        {% for key, value in dict.items %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ value }}</td>
+                            <td><a href="{% url 'UserPredictTestProcess' value %}">Start Test</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{%endblock%}

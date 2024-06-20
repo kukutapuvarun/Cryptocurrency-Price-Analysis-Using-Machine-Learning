@@ -1,0 +1,91 @@
+{%extends 'admins/adminbase.html'%}
+{%load static%}
+{%block contents%}
+
+<section class="hero-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+                <div class="block">
+                    <h1>Vew Registered Users</h1>
+                    <style>
+                        /* Styling for the table */
+                        table {
+                            border-collapse: collapse;
+                            width: 100%;
+                            border: 2px solid black;
+                        }
+                    
+                        /* Styling for table header cells */
+                        th {
+                            background-color: darkblue;
+                            color: white;
+                            border: 2px solid black;
+                            padding: 8px;
+                            text-align: center;
+                        }
+                    
+                        /* Styling for table data cells */
+                        td {
+                            border: 2px solid black;
+                            padding: 8px;
+                            text-align: center;
+                            color: black;
+                        }
+                    
+                        /* Styling for the "Activate" link */
+                        .btn-link {
+                            color: darkblue;
+                            text-decoration: none;
+                        }
+                    
+                        /* Hover effect for links */
+                        .btn-link:hover {
+                            text-decoration: underline;
+                        }
+                    </style>
+                    
+                    <table border="2px">
+                        <tr>
+                            <th>S.No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>PAN</th>
+                            <th>State</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Auth Key</th>
+                            <th>Activate</th>
+                            <th>Date</th>
+                        </tr>
+                        {% for i in objects %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.username }}</td>
+                            <td>{{ i.email }}</td>
+                            <td>{{ i.mobile }}</td>
+                            <td>{{ i.pan }}</td>
+                            <td>{{ i.state }}</td>
+                            <td>{{ i.location }}</td>
+                            <td>{{ i.status }}</td>
+                            <td>{{ i.authkey }}</td>
+                            <td>{{ i.cdate }}</td>
+                            <td>
+                                {% if i.status == 'waiting' %}
+                                <a class="btn-link" href="/activatewaitedusers/?uid={{ i.id }}">Activate</a>
+                                {% else %}
+                                Activated
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+{%endblock%}

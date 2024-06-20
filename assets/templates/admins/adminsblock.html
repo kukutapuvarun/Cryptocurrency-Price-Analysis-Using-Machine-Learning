@@ -1,0 +1,49 @@
+{%extends 'admins/adminbase.html'%}
+{%load static%}
+{%block contents%}
+
+<section class="hero-area" xmlns="http://www.w3.org/1999/html">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+
+			</div>
+			<div class="col-md-12">
+				<div class="block">
+					<h2>Current Ledger Blocks is ${{ledger}}</h2>
+					<p>Current Transactions of the trading</p>
+                    <table border="2" style="border-collapse: collapse; width: 100%;">
+                        <tr style="background-color: #f8f8ff; color: darkblue; font-weight: bold;">
+                            <th>S.No</th>
+                            <th>Customer Email</th>
+                            <th>Agent Email</th>
+                            <th>Coin Name</th>
+                            <th>Quantity</th>
+                            <th>Paid Amount</th>
+                            <th>Ledger Balance</th>
+                        </tr>
+                        {% for i in objects %}
+                        <tr style="background-color: #f8f8f8; color: navy;">
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ i.customeremail }}</td>
+                            <td>{{ i.agentemail }}</td>
+                            <td>{{ i.currencyname }}</td>
+                            <td>{{ i.quantity }}</td>
+                            <td>$ {{ i.paidammout }}</td>
+                            <td>$ {{ i.blockchainmoney }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+
+                    <p>Date : 28-Sept-2019 Trading Rates of the Crypto Currencies</p>
+                    <table border="2px">
+                        <tr><td>1  &#8383; = Bitcoin</td><td>$ 57,780.80</td></tr>
+                        <tr><td>1 Etherum</td><td>$ 2,924.82</td></tr>
+                        <tr><td>1 Ripple</td><td>$ 0.51243</td></tr>
+                    </table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{%endblock%}

@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block contents%}
+
+<section class="hero-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="video-player">
+					<!-- <img class="img-fluid rounded" src="{%static 'images/slider/slider-bg-2.jpg'%}" alt=""> -->
+					<a class="play-icon" href="javascript:void(0)">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/6Gu2QMTAkEU?si=OdhE7PEExLp94yHl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="block">
+					<h2>Cryptocurrency Price Analysis With Artificial Intelligence</h2>
+					<p>Cryptocurrency is playing an increasingly important role in reshaping the financial system due to its growing popular appeal and mechant acceptance. While many people are making investments in Cryptocurrency, the dynamical features, uncertainty, the predictability of Cryptocurrency are still mostly unknown, which dramatically risk the investments</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{%endblock%}
